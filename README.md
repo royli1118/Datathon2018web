@@ -1,21 +1,15 @@
-# Datathon 2018 Website Weather App
+# Datathon 2018 Myki Railway Stations and surroundings Analysis
+
+##### Producer:
+
+          Youshao Xiao
+          Huanan Li
+          Jiaheng Zhu
 
 
-Using Start BootStrap Dashboard to create a weather app website
+Using Start BootStrap Dashboard to create a app website
 
 Reference from :
 
 * https://startbootstrap.com
 
-What I have done: 
-
-1. Some Configurations for Melbourne Datathon 2018
-
-2. Upload the Data into Google Cloud Platform
-
-
-## 1. Command line - Unzipping ".gz" files
-
-find . -type f -name "*.gz" -exec gunzip {} \;
-
-## 2. Build a weather website integrated with commute data(Continuing)
