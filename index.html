@@ -23,31 +23,105 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
 
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css' rel='stylesheet' />
+
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      h2,
+      h3 {
+        margin: 10px;
+        font-size: 1.2em;
+      }
+
+      h3 {
+        font-size: 1em;
+      }
+
+      p {
+        font-size: 0.85em;
+        margin: 10px;
+        text-align: left;
+      }
+
+      /**
+      * Create a position for the map
+      * on the page */
+      #map {
+        height: 700px;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+
+      /**
+      * Set rules for how the map overlays
+      * (info box and legend) will be displayed
+      * on the page. */
+      .map-overlay {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.8);
+        margin-right: 20px;
+        font-family: Arial, sans-serif;
+        overflow: auto;
+        border-radius: 3px;
+      }
+
+      #features {
+        top: 0;
+        height: 100px;
+        margin-top: 20px;
+        width: 250px;
+      }
+
+      #legend {
+        padding: 10px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        line-height: 18px;
+        height: 150px;
+        margin-bottom: 40px;
+        width: 100px;
+      }
+
+      .legend-key {
+        display: inline-block;
+        border-radius: 20%;
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+      }
+
+    </style>
+
   </head>
 
-  <body id="page-top">
+  <body id="page-top" onload="initialize()">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="index.html">Realestate and Surrouding Restaurant Insights</a>
+      <a class="navbar-brand mr-1" href="index.html">Realestate and Surrounding Restaurant Insights</a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
       </button>
 
       <!-- Navbar Search -->
-      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-primary" type="button">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </div>
-      </form>
+      <!--<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">-->
+        <!--<div class="input-group">-->
+          <!--<input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">-->
+          <!--<div class="input-group-append">-->
+            <!--<button class="btn btn-primary" type="button">-->
+              <!--<i class="fas fa-search"></i>-->
+            <!--</button>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</form>-->
 
       <!-- Navbar -->
+
       <!--<ul class="navbar-nav ml-auto ml-md-0">-->
         <!--<li class="nav-item dropdown no-arrow mx-1">-->
           <!--<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
@@ -103,16 +177,16 @@
             <!--<a class="dropdown-item" href="blank.html">Blank Page</a>-->
           <!--</div>-->
         <!--</li>-->
-        <!--<li class="nav-item">-->
-          <!--<a class="nav-link" href="charts.html">-->
-            <!--<i class="fas fa-fw fa-chart-area"></i>-->
-            <!--<span>Charts</span></a>-->
-        <!--</li>-->
-        <!--<li class="nav-item">-->
-          <!--<a class="nav-link" href="tables.html">-->
-            <!--<i class="fas fa-fw fa-table"></i>-->
-            <!--<span>Tables</span></a>-->
-        <!--</li>-->
+        <li class="nav-item">
+          <a class="nav-link" href="charts.html">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Charts</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="tables.html">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Tables</span></a>
+        </li>
       </ul>
 
       <div id="content-wrapper">
@@ -120,17 +194,66 @@
         <div class="container-fluid">
 
                     <!-- Breadcrumbs-->
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a href="#">Dashboard</a>
-            </li>
-            <li class="breadcrumb-item active">Overview</li>
-          </ol>
+          <!--<ol class="breadcrumb">-->
+            <!--<div class="container">-->
+              <!--<div class="row">-->
+                <!--<nav class="Breadcrumbs__col col-12" aria-label="Breadcrumbs" role="navigation">-->
+                  <!--<ul class="u-list-reset Breadcrumbs__list">-->
+
+                    <!--<li class="Breadcrumbs__listItem">-->
+                      <!--<a class="Breadcrumbs__link" href="https://beta.ptv.vic.gov.au/">-->
+
+                        <!--<i class="icon ti ti-home Breadcrumbs__homeIcon Breadcrumbs__icon" aria-hidden="true"></i>-->
+                        <!--<span class="sr-only">-->
+                                        <!--Home-->
+                                    <!--</span>-->
+
+                      <!--</a>-->
+
+                      <!--<i class="icon ti ti-chevron-right Breadcrumbs__icon Breadcrumbs__iconChevron" aria-hidden="true"></i>-->
+
+                    <!--</li>-->
+
+                    <!--<li class="Breadcrumbs__listItem">-->
+                      <!--<a class="Breadcrumbs__link" href="/journey/">-->
+
+                                    <!--<span class="text">-->
+                                        <!--Journey planner-->
+                                    <!--</span>-->
+
+                      <!--</a>-->
+
+                    <!--</li>-->
+
+                  <!--</ul>-->
+                <!--</nav>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</ol>-->
+
+          <!--<div class="card mb-3">-->
+            <!--<a class="weatherwidget-io" href="https://forecast7.com/en/n37d81144d96/melbourne/" data-label_1="MELBOURNE" data-label_2="WEATHER" data-font="Ubuntu" data-icons="Climacons Animated" data-mode="Current" data-days="3" data-theme="original" >MELBOURNE WEATHER</a>-->
+            <!--<div class="card-footer small text-muted" id="demo"> </div>-->
+          <!--</div>-->
 
           <div class="card mb-3">
-            <a class="weatherwidget-io" href="https://forecast7.com/en/n37d81144d96/melbourne/" data-label_1="MELBOURNE" data-label_2="WEATHER" data-font="Ubuntu" data-icons="Climacons Animated" data-mode="Current" data-days="3" data-theme="original" >MELBOURNE WEATHER</a>
-            <div class="card-footer small text-muted" id="demo"> </div>
+              <div class="card-header">
+                <i class="fas fa-globe"></i>
+                Maps of Public Transport Victoria</div>
+            <div id = 'map'></div>
+            <div class='map-overlay' id='features'><h2>US population density</h2><div id='pd'><p>Hover over a state!</p></div></div>
+            <div class='map-overlay' id='legend'></div>
+            <script>
+                mapboxgl.accessToken = 'pk.eyJ1Ijoicm95bGkxMTE4IiwiYSI6ImNqa293M3pmeTE0NTczdnFyaGdvZDRvMHAifQ.LE-xJ2nwy5NyujUgVps9Nw';
+                var map = new mapboxgl.Map({
+                    container: 'map', // container id
+                    style: 'mapbox://styles/royli1118/cjoqgjplu5wbd2rle8tamh333',
+                    center: [144.963200, -37.814200],
+                    zoom: 11.0
+                });
+            </script>
           </div>
+
           <!-- Icon Cards-->
           <div class="row">
             <div class="col-xl-3 col-sm-6 mb-3">
@@ -207,7 +330,6 @@
             <div class="card-body">
               <canvas id="myAreaChart" width="100%" height="30"></canvas>
             </div>
-            <!--<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>-->
           </div>
 
           <!-- DataTables Example -->
