@@ -1,4 +1,4 @@
-//An extract of address points from the LINZ bulk extract:
+//An extract of railway station points from data.vic.gov.au extract:
 //https://www.data.vic.gov.au/data/dataset/public-transport-a-collection-of-ptv-datasets
 var addressPoints = [
 [-37.579091,144.727319,"Sunbury Railway Station (Sunbury)"],

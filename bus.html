@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Datathon 2018 - Weather App</title>
+
+    <!-- Bootstrap core CSS-->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+    <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+    <script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
+    <style>
+        #map { top:0; bottom:0; width:100%; height: 450px}
+    </style>
+
+</head>
+
+<body id="page-top" onload="initialize()">
+
+<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+    <a class="navbar-brand mr-1" href="index.html">Realestate and Surrounding Restaurant Insights</a>
+
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+        <i class="fas fa-bars"></i>
+    </button>
+</nav>
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">
+                <i class="fas fa-fw fa-train"></i>
+                <span>Railway Stations</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="bus.html">
+                <i class="fas fa-fw fa-bus"></i>
+                <span>Bus Stations</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="tram.html">
+                <i class="fas fa-fw fa-subway"></i>
+                <span>Tram Stations</span></a>
+        </li>
+    </ul>
+
+    <div id="content-wrapper">
+
+        <div class="container-fluid">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fas fa-globe"></i>
+                    Bus Stations of Public Transport Victoria</div>
+                <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/leaflet.markercluster.js'></script>
+                <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.css' rel='stylesheet' />
+                <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.Default.css' rel='stylesheet' />
+                <div id='map'></div>
+                <!-- Example data. -->
+                <script src="js/metro_data.221.js"></script>
+                <script>
+                    L.mapbox.accessToken = 'pk.eyJ1Ijoicm95bGkxMTE4IiwiYSI6ImNqa293M3pmeTE0NTczdnFyaGdvZDRvMHAifQ.LE-xJ2nwy5NyujUgVps9Nw';
+                    // Here we don't use the second argument to map, since that would automatically
+                    // load in non-clustered markers from the layer. Instead we add just the
+                    // backing tileLayer, and then use the featureLayer only for its data.
+                    var map = L.mapbox.map('map', 'mapbox.streets')
+                        .setView([-37.814200,144.963200], 10);
+                    var markers = L.markerClusterGroup();
+
+                    $.getJSON("js/ptv_bus_stop.geojson", function(data) {
+                        var geoJsonLayer = L.geoJson(data, {
+                            onEachFeature: function (feature, layer) {
+                                layer.bindPopup(feature.properties.STOPSPEC);
+                            }
+                        });
+                        markers.addLayer(geoJsonLayer);
+                        map.addLayer(markers);
+                        map.fitBounds(markers.getBounds());
+                    });
+
+                </script>
+            </div>
+
+            <!-- Area Chart Example-->
+            <div class="card mb-3" id="4" style="display: none">
+                <div class="card-header">
+                    <i class="fas fa-chart-area"></i>
+                </div>
+                <div class="card-body">
+                    <canvas id="myAreaChart" width="100%" height="30"></canvas>
+                </div>
+            </div>
+
+            <!-- DataTables Example -->
+
+
+        </div>
+        <!-- /.container-fluid -->
+
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright © Datathon 2018</span>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Page level plugin JavaScript-->
+<script src="vendor/chart.js/Chart.min.js"></script>
+<script src="vendor/datatables/jquery.dataTables.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin.min.js"></script>
+
+<!-- Demo scripts for this page-->
+<script src="js/demo/datatables-demo.js"></script>
+<script src="js/demo/chart-area-demo.js"></script>
+
+</body>
+
+<script>
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>
+<script>
+    var d = new Date();
+    var n = d.toLocaleTimeString();
+    document.getElementById("demo").innerHTML = "Updated at " + n;
+</script>
+
+</html>
