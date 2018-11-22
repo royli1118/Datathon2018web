@@ -1,4 +1,4 @@
-# Datathon 2018 Myki Railway Stations and surroundings Analysis
+# Datathon 2018 Myki Stations and surroundings Analysis
 
 ##### Producer:
 
@@ -13,3 +13,4 @@ Reference from :
 
 * https://startbootstrap.com
 
+Using mapbox.js for producing the maps
