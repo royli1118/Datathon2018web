@@ -16,13 +16,13 @@ import urllib2
 import urllib
 import json
 from bs4 import BeautifulSoup
-
+from pybloomfilter import BloomFilter
 
 
 
 postcode_list = []
 postcode = '3008'
-
+download_bf = BloomFilter(1024 * 1024 * 16, 0.001)
 
 
 def crawl_by_postcode_buy(postcode):
@@ -56,6 +56,11 @@ def crawl_by_postcode_buy(postcode):
                 overall_info_per_house = article
                 detailed_link = overall_info_per_house.select('a.details-link')
                 detailed_link = "https://www.realestate.com.au" + detailed_link[0]['href']
+                if detailed_link in download_bf:
+                    continue
+                else:
+                    download_bf.add(detailed_link)
+
                 # print detailed_link
                 # 请求细节页
                 detailed_request = urllib2.Request(url=detailed_link)
