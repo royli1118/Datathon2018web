@@ -1,0 +1,50 @@
+[{
+    "property_size": null,
+    "img_link": "https://i2.au.reastatic.net/800x600/b378dda73bf622657a522b6264c992c7c014496fd9a61b351826b7c596b10861/image.jpg",
+    "buy_or_lend": "buy",
+    "detailed_features": [],
+    "postcode": "3000",
+    "address": "202/565 Flinders  Street\u00a0Melbourne, Vic 3000",
+    "property_type": "Apartment",
+    "property_price": "$449,000",
+    "latitude": "-37.821128",
+    "longitude": "144.955898"
+  },
+  {
+    "property_size": null,
+    "img_link": "https://i2.au.reastatic.net/800x600/659a0177b767d10ba1b78de70d827e2596f9538a7abbdcb5fa9af76532217e1a/image.jpg",
+    "buy_or_lend": "buy",
+    "detailed_features": [],
+    "postcode": "3000",
+    "address": "9 - 23 Mackenzie St\u00a0Melbourne, Vic 3000",
+    "property_type": "Apartment",
+    "property_price": "$470,000",
+    "latitude"  : "-37.807545",
+    "longitude": "144.967327"
+  },
+  {
+    "property_size": null,
+    "img_link": "https://i2.au.reastatic.net/800x600/f2bff91e7494864d8735e232a410b94e111bfd7cad95edb0dd05691d1f4eeddf/image.jpg",
+    "buy_or_lend": "buy",
+    "detailed_features": [
+      "Toilets: 1"
+    ],
+    "postcode": "3000",
+    "address": "28/79-81 Franklin Street\u00a0Melbourne, Vic 3000",
+    "property_type": "Apartment",
+    "property_price": "Auction $600,000 - $660,000",
+    "latitude"  : "-37.807935",
+    "longitude": "144.962"
+  },
+  {
+    "property_size": null,
+    "img_link": "https://i2.au.reastatic.net/800x600/afe8e52ef0a52300bcd2884841d3ed5a9a38997039ea1e6630930932e8fddf31/image.jpg",
+    "buy_or_lend": "buy",
+    "detailed_features": [],
+    "postcode": "3000",
+    "address": "1102/20 COROMANDEL PLACE\u00a0Melbourne, Vic 3000",
+    "property_type": "House",
+    "property_price": "$420,000-$450,000",
+    "latitude"  : "-37.813112",
+    "longitude": "144.969201"
+  }]

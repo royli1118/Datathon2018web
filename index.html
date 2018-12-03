@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Datathon 2018 - Weather App</title>
+    <title>Datathon 2018 - BI Application</title>
 
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -27,185 +27,177 @@
     <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
     <script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
     <style>
-      #map { top:0; bottom:0; width:100%; height: 450px}
+        #map { top:0; bottom:0; width:100%; height: 450px}
     </style>
 
-  </head>
+</head>
 
-  <body id="page-top" onload="initialize()">
+<body id="page-top">
 
-    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="index.html">Realestate and Surrounding Restaurant Insights</a>
+    <a class="navbar-brand mr-1" href="index.html">Realestate and Surrounding Restaurant Insights</a>
 
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
-      </button>
+    </button>
 
-      <!-- Navbar Search -->
-      <!--<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">-->
-        <!--<div class="input-group">-->
-          <!--<input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">-->
-          <!--<div class="input-group-append">-->
-            <!--<button class="btn btn-primary" type="button">-->
-              <!--<i class="fas fa-search"></i>-->
-            <!--</button>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</form>-->
+    <!-- Navbar Search -->
+    <!--<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">-->
+    <!--<div class="input-group">-->
+    <!--<input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">-->
+    <!--<div class="input-group-append">-->
+    <!--<button class="btn btn-primary" type="button">-->
+    <!--<i class="fas fa-search"></i>-->
+    <!--</button>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</form>-->
 
-      <!-- Navbar -->
+    <!-- Navbar -->
 
-      <!--<ul class="navbar-nav ml-auto ml-md-0">-->
-        <!--<li class="nav-item dropdown no-arrow mx-1">-->
-          <!--<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-            <!--<i class="fas fa-bell fa-fw"></i>-->
-            <!--<span class="badge badge-danger">9+</span>-->
-          <!--</a>-->
-          <!--<div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">-->
-            <!--<a class="dropdown-item" href="#">Action</a>-->
-            <!--<a class="dropdown-item" href="#">Another action</a>-->
-            <!--<div class="dropdown-divider"></div>-->
-            <!--<a class="dropdown-item" href="#">Something else here</a>-->
-          <!--</div>-->
-        <!--</li>-->
-        <!--<li class="nav-item dropdown no-arrow mx-1">-->
-          <!--<a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-            <!--<i class="fas fa-envelope fa-fw"></i>-->
-            <!--<span class="badge badge-danger">7</span>-->
-          <!--</a>-->
-          <!--<div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">-->
-            <!--<a class="dropdown-item" href="#">Action</a>-->
-            <!--<a class="dropdown-item" href="#">Another action</a>-->
-            <!--<div class="dropdown-divider"></div>-->
-            <!--<a class="dropdown-item" href="#">Something else here</a>-->
-          <!--</div>-->
-        <!--</li>-->
-      <!--</ul>-->
+    <!--<ul class="navbar-nav ml-auto ml-md-0">-->
+    <!--<li class="nav-item dropdown no-arrow mx-1">-->
+    <!--<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+    <!--<i class="fas fa-bell fa-fw"></i>-->
+    <!--<span class="badge badge-danger">9+</span>-->
+    <!--</a>-->
+    <!--<div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">-->
+    <!--<a class="dropdown-item" href="#">Action</a>-->
+    <!--<a class="dropdown-item" href="#">Another action</a>-->
+    <!--<div class="dropdown-divider"></div>-->
+    <!--<a class="dropdown-item" href="#">Something else here</a>-->
+    <!--</div>-->
+    <!--</li>-->
+    <!--<li class="nav-item dropdown no-arrow mx-1">-->
+    <!--<a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+    <!--<i class="fas fa-envelope fa-fw"></i>-->
+    <!--<span class="badge badge-danger">7</span>-->
+    <!--</a>-->
+    <!--<div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">-->
+    <!--<a class="dropdown-item" href="#">Action</a>-->
+    <!--<a class="dropdown-item" href="#">Another action</a>-->
+    <!--<div class="dropdown-divider"></div>-->
+    <!--<a class="dropdown-item" href="#">Something else here</a>-->
+    <!--</div>-->
+    <!--</li>-->
+    <!--</ul>-->
 
-    </nav>
+</nav>
 
-    <div id="wrapper">
+<div id="wrapper">
 
-      <!-- Sidebar -->
-      <ul class="sidebar navbar-nav">
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-train"></i>
-            <span>Railway Stations</span>
-          </a>
+            <a class="nav-link" href="index.html">
+                <i class="fas fa-fw fa-train"></i>
+                <span>Railway Stations</span>
+            </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="bus.html">
-            <i class="fas fa-fw fa-bus"></i>
-            <span>Bus Stations</span></a>
+            <a class="nav-link" href="bus.html">
+                <i class="fas fa-fw fa-bus"></i>
+                <span>Bus Stations</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="tram.html">
-            <i class="fas fa-fw fa-subway"></i>
-            <span>Tram Stations</span></a>
+            <a class="nav-link" href="tram.html">
+                <i class="fas fa-fw fa-subway"></i>
+                <span>Tram Stations</span></a>
         </li>
-      </ul>
+    </ul>
 
-      <div id="content-wrapper">
+    <div id="content-wrapper">
 
-        <div class="container-fluid" id="2">
+        <div class="container-fluid">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fas fa-globe"></i>
+                    Railway Stations of Public Transport Victoria</div>
+                <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/leaflet.markercluster.js'></script>
+                <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.css' rel='stylesheet' />
+                <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.Default.css' rel='stylesheet' />
+                <div id='map'></div>
+                <!-- Example data. -->
+                <script src="js/metro_data.221.js"></script>
+                <script>
+                    L.mapbox.accessToken = 'pk.eyJ1Ijoicm95bGkxMTE4IiwiYSI6ImNqa293M3pmeTE0NTczdnFyaGdvZDRvMHAifQ.LE-xJ2nwy5NyujUgVps9Nw';
+                    // Here we don't use the second argument to map, since that would automatically
+                    // load in non-clustered markers from the layer. Instead we add just the
+                    // backing tileLayer, and then use the featureLayer only for its data.
+                    var map = L.mapbox.map('map', 'mapbox.streets')
+                        .setView([-37.814200,144.963200], 10);
+                    //var myLayer = L.mapbox.featureLayer().loadURL('js/vic-states.geojson').addTo(map);
 
-                    <!-- Breadcrumbs-->
-          <!--<ol class="breadcrumb">-->
-            <!--<div class="container">-->
-              <!--<div class="row">-->
-                <!--<nav class="Breadcrumbs__col col-12" aria-label="Breadcrumbs" role="navigation">-->
-                  <!--<ul class="u-list-reset Breadcrumbs__list">-->
+                    var markers = new L.MarkerClusterGroup();
 
-                    <!--<li class="Breadcrumbs__listItem">-->
-                      <!--<a class="Breadcrumbs__link" href="https://beta.ptv.vic.gov.au/">-->
+                    for (var i = 0; i < addressPoints.length; i++) {
+                        var a = addressPoints[i];
+                        var title = a[2];
+                        var marker = L.marker(new L.LatLng(a[0], a[1]), {
+                            icon: L.mapbox.marker.icon({'marker-symbol': 'rail', 'marker-color': '0044FF'}),
+                            title: title
+                        });
+                        marker.bindPopup('<button class="trigger">'+title+'</button>');
+                        markers.addLayer(marker);
+                    }
 
-                        <!--<i class="icon ti ti-home Breadcrumbs__homeIcon Breadcrumbs__icon" aria-hidden="true"></i>-->
-                        <!--<span class="sr-only">-->
-                                        <!--Home-->
-                                    <!--</span>-->
+                    map.addLayer(markers);
 
-                      <!--</a>-->
+                    $('#map').on('click', '.trigger', function() {
+                        $("#4").show()
+                        morePointsFunction()
+                    });
 
-                      <!--<i class="icon ti ti-chevron-right Breadcrumbs__icon Breadcrumbs__iconChevron" aria-hidden="true"></i>-->
+                </script>
+                <script>
+                    function morePointsFunction() {
 
-                    <!--</li>-->
+                        var markers2 = new L.MarkerClusterGroup();
 
-                    <!--<li class="Breadcrumbs__listItem">-->
-                      <!--<a class="Breadcrumbs__link" href="/journey/">-->
+                        $.getJSON("crawler/buy-data/buytemplate.json", function( data ) {
+                            $.each(data, function(k, v) {
+                                var lat = v.latitude;
+                                var long = v.longitude;
+                                var add = v.address;
+                                var marker2;
+                                if (v.property_type == "Apartment"){
+                                    marker2 = L.marker(new L.LatLng(lat, long), {
+                                        icon: L.mapbox.marker.icon({'marker-symbol': '', 'marker-color': '#422'}),
+                                        title: add
+                                    });
+                                }
+                                else {
+                                    marker2 = L.marker(new L.LatLng(lat, long), {
+                                        icon: L.mapbox.marker.icon({'marker-symbol': '', 'marker-color': '#FF0000'}),
+                                        title: add
+                                    });
+                                }
+                                var content = '<h2>'+v.address+'</h2>' +
+                                    '<img src="'+v.img_link+'" width="85" height="85">' +
+                                    '<p>'+v.property_type+'</p>';
+                                marker2.bindPopup(content);
+                                markers2.addLayer(marker2);
+                            });
+                        });
+                        map.addLayer(markers2);
+                    }
 
-                                    <!--<span class="text">-->
-                                        <!--Journey planner-->
-                                    <!--</span>-->
 
-                      <!--</a>-->
-
-                    <!--</li>-->
-
-                  <!--</ul>-->
-                <!--</nav>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</ol>-->
-
-          <!--<div class="card mb-3">-->
-            <!--<a class="weatherwidget-io" href="https://forecast7.com/en/n37d81144d96/melbourne/" data-label_1="MELBOURNE" data-label_2="WEATHER" data-font="Ubuntu" data-icons="Climacons Animated" data-mode="Current" data-days="3" data-theme="original" >MELBOURNE WEATHER</a>-->
-            <!--<div class="card-footer small text-muted" id="demo"> </div>-->
-          <!--</div>-->
-
-          <div class="card mb-3" id="1">
-              <div class="card-header">
-                <i class="fas fa-globe"></i>
-                Railway Stations of Public Transport Victoria</div>
-              <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/leaflet.markercluster.js'></script>
-              <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.css' rel='stylesheet' />
-              <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.Default.css' rel='stylesheet' />
-              <div id='map'></div>
-              <!-- Example data. -->
-              <script src="js/metro_data.221.js"></script>
-              <script>
-                  L.mapbox.accessToken = 'pk.eyJ1Ijoicm95bGkxMTE4IiwiYSI6ImNqa293M3pmeTE0NTczdnFyaGdvZDRvMHAifQ.LE-xJ2nwy5NyujUgVps9Nw';
-                  // Here we don't use the second argument to map, since that would automatically
-                  // load in non-clustered markers from the layer. Instead we add just the
-                  // backing tileLayer, and then use the featureLayer only for its data.
-                  var map = L.mapbox.map('map', 'mapbox.streets')
-                      .setView([-37.814200,144.963200], 10);
-                  //var myLayer = L.mapbox.featureLayer().loadURL('js/vic-states.geojson').addTo(map);
-
-                  var markers = new L.MarkerClusterGroup();
-
-                  for (var i = 0; i < addressPoints.length; i++) {
-                      var a = addressPoints[i];
-                      var title = a[2];
-                      var marker = L.marker(new L.LatLng(a[0], a[1]), {
-                          icon: L.mapbox.marker.icon({'marker-symbol': 'rail', 'marker-color': '0044FF'}),
-                          title: title
-                      });
-                      marker.bindPopup('<button class="trigger">'+title+'</button>');
-                      markers.addLayer(marker);
-                  }
-
-                  map.addLayer(markers);
-
-                  $('#map').on('click', '.trigger', function() {
-                      $("#4").show()
-                  });
-
-              </script>
-          </div>
-
-          <!-- Area Chart Example-->
-          <div class="card mb-3" id="4" style="display: none">
-            <div class="card-header">
-              <i class="fas fa-chart-area"></i>
-              </div>
-            <div class="card-body">
-              <canvas id="myAreaChart" width="100%" height="30"></canvas>
+                </script>
             </div>
-          </div>
 
-          <!-- DataTables Example -->
+            <!-- Area Chart Example-->
+            <div class="card mb-3" id="4" style="display: none">
+                <div class="card-header">
+                    <i class="fas fa-chart-area"></i>
+                </div>
+                <div class="card-body">
+                    <canvas id="myAreaChart" width="100%" height="30"></canvas>
+                </div>
+            </div>
+
+            <!-- DataTables Example -->
 
 
         </div>
@@ -213,52 +205,42 @@
 
         <!-- Sticky Footer -->
         <footer class="sticky-footer">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright © Datathon 2018</span>
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright © Datathon 2018</span>
+                </div>
             </div>
-          </div>
         </footer>
 
-      </div>
-      <!-- /.content-wrapper -->
-
     </div>
-    <!-- /#wrapper -->
+    <!-- /.content-wrapper -->
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
+</div>
+<!-- /#wrapper -->
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Page level plugin JavaScript-->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="vendor/datatables/jquery.dataTables.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin.min.js"></script>
+<!-- Page level plugin JavaScript-->
+<script src="vendor/chart.js/Chart.min.js"></script>
+<script src="vendor/datatables/jquery.dataTables.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.js"></script>
 
-    <!-- Demo scripts for this page-->
-    <script src="js/demo/datatables-demo.js"></script>
-    <script src="js/demo/chart-area-demo.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin.min.js"></script>
 
-  </body>
+<!-- Demo scripts for this page-->
+<script src="js/demo/datatables-demo.js"></script>
+<script src="js/demo/chart-area-demo.js"></script>
 
-  <script>
-      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-  </script>
-  <script>
-      var d = new Date();
-      var n = d.toLocaleTimeString();
-      document.getElementById("demo").innerHTML = "Updated at " + n;
-  </script>
-
+</body>
 </html>
